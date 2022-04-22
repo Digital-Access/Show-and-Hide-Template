@@ -19,7 +19,7 @@ const config = {
     answer_background_colour: "rgba(37, 81, 123, 0.5)",
     answer_font_colour: "white",
     big_answer_image: [
-        "https://a.storyblok.com/f/112136/446x446/cf944b253b/1.png",
+        "https://a.storyblok.com/f/112136/1001x354/be5144572e/aware.png",
         "https://a.storyblok.com/f/112136/446x446/3ea9d4491c/2.png",
         "https://a.storyblok.com/f/112136/446x446/1cadc0e6c3/3.png",
         "https://a.storyblok.com/f/112136/446x446/0c7f465cc6/4.png",
@@ -44,7 +44,7 @@ const selectionArea = document.getElementById('selectionArea');
 const answerContainer = document.getElementById('answerContainer');
 const answer = document.createElement("p");
 const smallAnswerImage = document.createElement("img");
-const largeImageContainer = document.getElementById('largeImage');
+const largeImageContainer = document.getElementById('largeImageContainer');
 const largeImage = document.createElement('img');
 const smallContainer = document.createElement('div')
 
@@ -108,7 +108,7 @@ config.selection_options.forEach(element => {
         if (event) {
             svg.appendChild(checkPath);
             svg.style.backgroundColor = config.check_box_fill_colour;
-            answerContainer.appendChild(largeImage);
+            largeImageContainer.appendChild(largeImage);
             smallContainer.appendChild(smallAnswerImage);
             smallContainer.appendChild(answer);
             answerContainer.appendChild(smallContainer)
