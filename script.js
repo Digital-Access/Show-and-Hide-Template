@@ -11,7 +11,7 @@ const config = {
         "Google Trends"
     ],
     answer_options: [
-        "See how content is shared and engaged with.",
+        "",
         "Useful for monitoring your own content for measurement and benchmarking.",
         "A great Twitter tool to monitor trends, build and segment lists of key users, monitor content performance and more.",
         "Can show you how many people are talking about a topic. You can cross reference it with Reddit, Quora or a social media platform to validate the data and make a call on how impactful that content is."
@@ -25,7 +25,7 @@ const config = {
         "https://a.storyblok.com/f/112136/446x446/0c7f465cc6/4.png",
     ],
     small_answer_image: [
-        "https://a.storyblok.com/f/112136/446x446/cf944b253b/1.png",
+        "",
         "https://a.storyblok.com/f/112136/446x446/3ea9d4491c/2.png",
         "https://a.storyblok.com/f/112136/446x446/1cadc0e6c3/3.png",
         "https://a.storyblok.com/f/112136/446x446/0c7f465cc6/4.png",
@@ -125,6 +125,14 @@ config.selection_options.forEach(element => {
         answer.textContent = config.answer_options[correctIndex]
         smallAnswerImage.src = config.small_answer_image[correctIndex]
        
+        if (config.answer_options[correctIndex].length != 0 || !config.answer_options[correctIndex] === " ") {
+            smallContainer.style.margin = '1rem'
+            largeImageContainer.style.paddingBottom = 0
+        } else {
+            smallContainer.style.margin = 0
+            largeImageContainer.style.paddingBottom = '1rem'
+        }
+
         if (config.small_answer_image[correctIndex].length != 0 || !config.small_answer_image[correctIndex] === " ") {
             smallAnswerImage.style.marginRight = '1rem'
         } else {
