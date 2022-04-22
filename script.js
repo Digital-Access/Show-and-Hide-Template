@@ -18,6 +18,18 @@ const config = {
     ],
     answer_background_colour: "rgba(37, 81, 123, 0.5)",
     answer_font_colour: "white",
+    big_answer_image: [
+        "https://a.storyblok.com/f/112136/446x446/cf944b253b/1.png",
+        "https://a.storyblok.com/f/112136/446x446/3ea9d4491c/2.png",
+        "https://a.storyblok.com/f/112136/446x446/1cadc0e6c3/3.png",
+        "https://a.storyblok.com/f/112136/446x446/0c7f465cc6/4.png",
+    ],
+    small_answer_image: [
+        "https://a.storyblok.com/f/112136/446x446/cf944b253b/1.png",
+        "https://a.storyblok.com/f/112136/446x446/3ea9d4491c/2.png",
+        "https://a.storyblok.com/f/112136/446x446/1cadc0e6c3/3.png",
+        "https://a.storyblok.com/f/112136/446x446/0c7f465cc6/4.png",
+    ],
     background_colour: "rgba(37, 81, 123, 1)",
     background_image: "https://a.storyblok.com/f/112136/1920x1409/5ba98e7f92/texture-bg-5efdcf3715f790-74747584-606d864d1b22d1-55861802.jpg",
     check_box_fill_colour: "green"
@@ -31,6 +43,11 @@ const headerContainer = document.getElementById('headerContainer');
 const selectionArea = document.getElementById('selectionArea');
 const answerContainer = document.getElementById('answerContainer');
 const answer = document.createElement("p");
+const smallAnswerImage = document.createElement("img");
+const largeImageContainer = document.getElementById('largeImage');
+const largeImage = document.createElement('img');
+const smallContainer = document.createElement('div')
+
 
 body.style.backgroundColor = config.background_colour;
 body.style.backgroundImage = `url(${config.background_image})`;
@@ -38,6 +55,9 @@ title.textContent = config.title;
 question.textContent = config.question;
 answerContainer.style.backgroundColor = config.answer_background_colour;
 answer.style.color = config.answer_font_colour;
+smallAnswerImage.className = 'smallAnswerImage';
+largeImage.className = 'largeAnswerImage';
+smallContainer.className = 'smallContainer'
 
 if (config.image_on === true) {
     image.src = config.image
@@ -79,7 +99,7 @@ config.selection_options.forEach(element => {
 
     selectionSection.addEventListener('click', event => {
         const selected = Array.from(selectionArea.children);
-        answerContainer.style.display = 'block';
+        answerContainer.style.display = 'flex';
 
         selected.forEach(element => {
             element.firstChild.style.backgroundColor = 'transparent';
@@ -88,8 +108,10 @@ config.selection_options.forEach(element => {
         if (event) {
             svg.appendChild(checkPath);
             svg.style.backgroundColor = config.check_box_fill_colour;
-            answerContainer.appendChild(answer);
-
+            answerContainer.appendChild(largeImage);
+            smallContainer.appendChild(smallAnswerImage);
+            smallContainer.appendChild(answer);
+            answerContainer.appendChild(smallContainer)
         } else {
             svg.removeChild(checkPath);
         }
@@ -98,9 +120,16 @@ config.selection_options.forEach(element => {
             if (element.firstChild.style.backgroundColor === config.check_box_fill_colour) {
                 return true
             }
-        })
-        console.log(correctIndex)
+        }) 
+        largeImage.src = config.big_answer_image[correctIndex]
         answer.textContent = config.answer_options[correctIndex]
+        smallAnswerImage.src = config.small_answer_image[correctIndex]
+       
+        if (config.small_answer_image[correctIndex].length != 0 || !config.small_answer_image[correctIndex] === " ") {
+            smallAnswerImage.style.marginRight = '1rem'
+        } else {
+            smallAnswerImage.style.marginRight = 0
+        }
     })
 
 });

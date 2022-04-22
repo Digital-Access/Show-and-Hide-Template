@@ -52,14 +52,31 @@ body {
 }
 
 .answerContainer{
+    flex-direction: column;
     display: none;
     background-color: rgba(37, 81, 123, 0.5);
-    padding: 1rem;
     border-radius: 5px;
     color: white;
     font-family: gothamLight, sans-serif;
     font-weight: lighter;
-    
+}
+
+.smallContainer{
+    display: flex;
+    align-items:center;
+    margin: 1rem
+}
+
+.smallAnswerImage{
+    max-width: 5rem;
+    height: auto;
+}
+
+.largeAnswerImage{
+    display: flex;
+    max-width: 100%;
+    max-height: 250px;
+    margin: auto
 }
 
 .selectionTitleContainer {
@@ -68,6 +85,7 @@ body {
     align-items: center;
     font-size: 1.2rem;
 }
+
 
 .title {
     font-size: 1.5rem;
@@ -80,17 +98,6 @@ body {
     margin-top: 1rem;
 }
 
-.textArea {
-    width: 100%;
-    resize: vertical;
-    padding: 0.5rem;
-    color: #172B49;
-    height: 2.3rem;
-}
-
-.textAreaOff {
-    display: none;
-}
 
 .btn {
     padding: 0.5rem 1rem 0.5rem 1rem;
